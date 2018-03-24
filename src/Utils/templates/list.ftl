@@ -13,7 +13,7 @@
 	<div>
   		<ul>
     		<#list userList.itemList as item>
-			<li>${item_index + 1}. ${item.title}</li>
+			<a href="/${userList.id}/item/${item.id}"><li>${item_index + 1}. ${item.title}</li></a>
 			</#list>
 			<li class="newItem">Add new item</li>
   		</ul>

@@ -1,8 +1,11 @@
 import Utils.TemplateConfiguration;
 
 import DAO.*;
+
+import java.util.List;
+
 import Component.*;
-import Controller.*;
+import Controller.WebizController;
 
 public class Main {
 	/**
@@ -12,10 +15,10 @@ public class Main {
 		
 		/// Configure freeMarker
 		TemplateConfiguration.initialize();
-		
+						
 		/// Listen /list route
-		ListController listCtrl = new ListController();
-		
+		new WebizController();
+
 		/*
 		try {			
 			UserList userList = new UserList("OS to install", "101010");
@@ -26,15 +29,16 @@ public class Main {
 
 			System.out.println(userList);
 
-			List<Item> itemList = ItemDAO.getByListId(userList.getId());	
+			List<Item> itemList = ItemDAO.getByListId(userList.getId()+"");	
 			for (Item item : itemList) {
 				System.out.println(item);
 			}
 
 		} catch (Exception e) {
 			System.out.println("ERR: " + e.getMessage());
-		}*/
-
+		}
+		*/
+		
 	}
 
 }

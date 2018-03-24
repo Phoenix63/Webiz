@@ -6,7 +6,6 @@ import org.sql2o.Connection;
 
 import Component.*;
 
-
 public class ListDAO {
 
 	private static final String getAllQuery = "SELECT * FROM LIST;";
@@ -38,8 +37,13 @@ public class ListDAO {
 			UserList result = conn.createQuery(getByIdQuery)
 								  .addParameter("id", id)
 								  .executeAndFetchFirst(UserList.class);
-			conn.close();			
+			conn.close();		
 			
+			if (result != null) {
+				List<Item> itemListForCurrentUser = ItemDAO.getByListId(id);
+				result.setItemList(itemListForCurrentUser);
+			}
+	
 			return result;			
 		} else {
 			throw new Exception("Database connection failled !");

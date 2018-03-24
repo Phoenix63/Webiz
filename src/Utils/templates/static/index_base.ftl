@@ -17,10 +17,6 @@
 
 <body>
         <div class="container">
-        	<header>
-        		<h1>Welcome to webiz</h1>
-        		<span>A new list manager</span>
-        	</header>
             <section>				
                 <div id="container_demo" >
                     <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
@@ -28,16 +24,20 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="#login" method="POST" autocomplete="on"> 
+                            <form  action="#login" autocomplete="on"> 
                                 <h1>Log in</h1> 
                                 <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="myusername"/>
+                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
+                                <p class="keeplogin"> 
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+									<label for="loginkeeping">Keep me logged in</label>
+								</p>
                                 <p class="login button"> 
                                     <input type="submit" value="Login" /> 
 								</p>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="#register" method="POST" autocomplete="on"> 
+                            <form  action="#register" autocomplete="on"> 
                                 <h1> Sign up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">Your username</label>

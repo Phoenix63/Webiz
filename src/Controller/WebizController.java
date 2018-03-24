@@ -12,9 +12,36 @@ import java.util.Map;
 import spark.Spark;
 import spark.ModelAndView;
 
-public class ListController {
+public class WebizController {
 
-	public ListController() {
+	public WebizController() {		
+		Spark.staticFileLocation("Utils/templates/static");
+		initializeRoutes();		
+	}
+	public WebizController(int port) {
+		Spark.port(port);			
+		initializeRoutes();		
+	}
+
+	private void initializeRoutes() {
+
+		initializeGetRoutes();
+		initializePostRoutes();
+		initializePutRoutes();
+		initializeDeleteRoutes();
+
+	}
+	
+	private void initializeGetRoutes() {
+		
+		Spark.get("/", (req, res) -> {
+			
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("title", "Welcome page");
+			return new FreeMarkerEngine().render(new ModelAndView(model, "index_base.ftl"));			
+
+		});
+		
 		Spark.get("/list", (req, res) -> {
 
 			// 1. Retrieve data
@@ -33,12 +60,18 @@ public class ListController {
 		Spark.get("/list/:id", (req, res) -> {
 
 			String id = req.params(":id");
-			
+			try {
+				Integer.parseInt(id);
+			} catch (Exception ex) {
+				res.status(404);
+				return String.format("No list with id '%s' found", id);
+			}
+
 			// 1. Retrieve data
 			UserList list = ListDAO.getById(id);
 			if (list == null) {
 				res.status(404);
-				return String.format("No user with id '%s' found", id);
+				return String.format("No list with id '%s' found", id);
 			}
 
 			// 2. Build model
@@ -50,7 +83,16 @@ public class ListController {
 			return new FreeMarkerEngine().render(new ModelAndView(model, "list.ftl"));		
 
 		});
-
+		
 	}
-
+	private void initializePostRoutes() {
+		
+	}
+	private void initializePutRoutes() {
+		
+	}
+	private void initializeDeleteRoutes() {
+		
+	}
+	
 }

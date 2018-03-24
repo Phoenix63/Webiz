@@ -47,7 +47,7 @@ public class ItemDAO {
 		
 	}
 	
-	public static List<Item> getByListId(int id) throws Exception {
+	public static List<Item> getByListId(String id) throws Exception {
 		
 		Connection conn = DAO.getConnection();
 		if (conn != null) {

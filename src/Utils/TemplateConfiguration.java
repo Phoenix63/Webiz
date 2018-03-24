@@ -20,7 +20,7 @@ public class TemplateConfiguration {
 
 		/// NOTE: The configuration code below must be executed once
 		cfg = new Configuration(new Version(2, 3, 20));
-		cfg.setClassForTemplateLoading(TemplateConfiguration.class, "templates");
+		cfg.setClassForTemplateLoading(TemplateConfiguration.class, "templates/");
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setLocale(Locale.US);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
