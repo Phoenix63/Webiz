@@ -28,7 +28,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="#login" method="POST" autocomplete="on"> 
+                            <form  action="/login" method="POST" autocomplete="on"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your username </label>
@@ -38,6 +38,9 @@
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
+                                <#if loginError??>
+                                <span style="color: red;">Wrong credential</span>
+                                </#if>
                                 <p class="login button"> 
                                     <input type="submit" value="Login" /> 
 								</p>
@@ -49,7 +52,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="#register" method="POST" autocomplete="on"> 
+                            <form  action="/register" method="POST" autocomplete="on"> 
                                 <h1> Sign up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">Your username</label>

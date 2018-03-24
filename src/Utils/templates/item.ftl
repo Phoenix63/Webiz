@@ -9,7 +9,8 @@
   		<h2>${item.description}</h2>
   		<div>
   			<span>
-  				last modification the ${item.lastModificationDate} | created the ${item.creationDate}
+  				last modification the ${item.lastModificationDate?string('dd.MM.yyyy HH:mm')} | 
+  				created the ${item.creationDate?string('dd.MM.yyyy HH:mm')}
   			</span>
   		</div>
 	</div>

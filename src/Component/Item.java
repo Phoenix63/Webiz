@@ -139,7 +139,6 @@ public class Item implements Serializable {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
-		this.last_modification = new Date();
 	}
 
 	/**
@@ -148,7 +147,6 @@ public class Item implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-		this.last_modification = new Date();
 	}
 	
 	/**

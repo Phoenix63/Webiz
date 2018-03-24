@@ -11,6 +11,7 @@ public class ItemDAO {
 	private static final String getAllQuery = "SELECT * FROM ITEM;";
 	private static final String getByIdQuery = "SELECT * FROM ITEM WHERE ID=:id;";
 	private static final String getByListIdQuery = "SELECT * FROM ITEM WHERE LIST_ID=:id;";
+	private static final String getByIdAndListIdQuery = "SELECT * FROM ITEM WHERE ID=:id AND LIST_ID=:listId;";
 	
 	private static final String insertQuery = 
 			"INSERT INTO ITEM (creation, last_modification, title, description, list_id) "
@@ -54,6 +55,23 @@ public class ItemDAO {
 			List<Item> result = conn.createQuery(getByListIdQuery)
 									.addParameter("id", id)
 									.executeAndFetch(Item.class);
+			conn.close();
+			
+			return result;
+		} else {
+			throw new Exception("Database connection failled !");
+		}
+		
+	}
+	
+	public static Item getByIdAndListId(String id, String listId) throws Exception {
+		
+		Connection conn = DAO.getConnection();
+		if (conn != null) {
+			Item result = conn.createQuery(getByIdAndListIdQuery)
+									.addParameter("id", id)
+									.addParameter("listId", listId)
+									.executeAndFetchFirst(Item.class);
 			conn.close();
 			
 			return result;
