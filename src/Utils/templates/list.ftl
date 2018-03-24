@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>${title}
+  <title>${title}</title>
 </head>
 <body>
 	<!-- Title / Description bloc -->
@@ -12,7 +12,7 @@
 	<!-- Item list bloc -->
 	<div>
   		<ul>
-    		<#list items as item>
+    		<#list userList.itemList as item>
 			<li>${item_index + 1}. ${item.title}</li>
 			</#list>
 			<li class="newItem">Add new item</li>

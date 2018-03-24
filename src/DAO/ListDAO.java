@@ -10,7 +10,7 @@ import Component.*;
 public class ListDAO {
 
 	private static final String getAllQuery = "SELECT * FROM LIST;";
-	private static final String getByIdQuery = "SELETE * FROM LIST WHERE ID=:id;";
+	private static final String getByIdQuery = "SELECT * FROM LIST WHERE ID=:id;";
 	
 	private static final String insertQuery = 
 			"INSERT INTO LIST (title, description)"
@@ -31,7 +31,7 @@ public class ListDAO {
 		
 	}
 	
-	public static UserList getById(int id) throws Exception {
+	public static UserList getById(String id) throws Exception {
 		
 		Connection conn = DAO.getConnection();
 		if (conn != null) {

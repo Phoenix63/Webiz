@@ -1,13 +1,13 @@
 <html>
 <head>
-  <title>${title}
+  <title>${title}</title>
 </head>
 <body>
 	<!-- User list bloc -->
 	<div>
   		<ul>
     		<#list lists as list>
-      		<li>${list_index + 1}. ${list.title}</li>
+      		<a href="./list/${list.id}"><li>${list.title}</li></a>
 			</#list>
 			<li class="newItem">Add new list</li>
   		</ul>
