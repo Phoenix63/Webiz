@@ -5,17 +5,14 @@
 <body>
 	<!-- Title / Description bloc -->
 	<div>
- 		<h1>${userList.title}</h1>
-  		<h2>${userList.description}</h2>
+ 		<h1>${item.title}</h1>
+  		<h2>${item.description}</h2>
+  		<div>
+  			<span>
+  				last modification the ${item.lastModificationDate} | created the ${item.creationDate}
+  			</span>
+  		</div>
 	</div>
-
-	<!-- Item list bloc -->
-  	<ul>
-    	<#list items as item>
-      	<li>${item_index + 1}. ${item.title}</li>
-		</#list>
-		<li class="newItem">Add new item</li>
-  	</ul>
 
 </body>
 </html>

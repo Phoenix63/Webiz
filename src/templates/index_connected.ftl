@@ -3,14 +3,15 @@
   <title>${title}
 </head>
 <body>
-  <h1>${userList.title}</h1>
-  <h2>${userList.description}</h2>
-
-  <ul>
-    <#list items as item>
-      <li>${item_index + 1}. ${item.title}</li>
-	</#list>
-  </ul>
+	<!-- User list bloc -->
+	<div>
+  		<ul>
+    		<#list lists as list>
+      		<li>${list_index + 1}. ${list.title}</li>
+			</#list>
+			<li class="newItem">Add new list</li>
+  		</ul>
+  	</div>
 
 </body>
 </html>
