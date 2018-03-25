@@ -161,17 +161,15 @@ public class Item implements Serializable {
 	 * Make persistent the current item into the database
 	 */
 	public void makePersistent() {
-		
-		if (this.id == -1) {
-			try {
+
+		try {
+			if (this.id == -1) {
 				ItemDAO.create(this);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
+			}	else {
+				ItemDAO.update(this);
 			}
-		}
-		else
-		{
-			///ItemDAO.update(this);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		
 	}

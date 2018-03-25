@@ -10,6 +10,7 @@ import Component.*;
 
 public class TestItem {
 	
+	/// Unit test on properties	
 	@Test
 	public void testSetCreationDate() {
 		
@@ -26,6 +27,7 @@ public class TestItem {
 		
 	}
 
+	
 	@Test
 	public void testSetLastModificationDate() {
 		
@@ -41,53 +43,7 @@ public class TestItem {
 		);
 		
 	}
-	
-	@Test
-	public void testSetLastModificationDateWhenTitleChange() {
 		
-		Item myItem = new Item();
-		Date myDate = myItem.getLastModificationDate();
-		
-		/// NOTE: Used because the run is too quickly
-		try {
-			Thread.sleep(150);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		myItem.setTitle("Linux");	
-		
-		assertNotEquals(
-				"The last modification date was not changed correctly", 
-				myItem.getLastModificationDate(), 
-				myDate
-		);
-		
-	}
-	
-	@Test
-	public void testSetLastModificationDateWhenDescriptionChange() {
-		
-		Item myItem = new Item();
-		Date myDate = myItem.getLastModificationDate();
-
-		/// NOTE: Used because the run is too quickly
-		try {
-			Thread.sleep(150);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		myItem.setDescription("Linux");	
-					
-		assertNotEquals(
-				"The last modification date was not changed correctly", 
-				myItem.getLastModificationDate(), 
-				myDate
-		);
-		
-	}
-
 	@Test
 	public void testSetTitle() {
 		
@@ -116,4 +72,8 @@ public class TestItem {
 		
 	}
 
+	/// Unit test on DAO
+	//create -> save -> get -> compare
+	//get -> update -> save -> get -> compare
+	
 }

@@ -184,17 +184,17 @@ public class UserList implements Serializable {
 	 * 
 	 */
 	public void makePersistent() {
-		
-		if (this.id == -1) {
-			try {
+
+		try {
+			if (this.id == -1) {
 				ListDAO.create(this);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
+			} else {
+				ListDAO.update(this);
 			}
-		} else {
-			///ListDAO.update(this);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
+
 	}
 	
 }

@@ -17,6 +17,12 @@ public class ItemDAO {
 			"INSERT INTO ITEM (creation, last_modification, title, description, list_id) "
 		  + "VALUES (:creation, :last_modification, :title, :description, :list_id);";
 	
+	private static final String updateQuery = 
+			"UPDATE ITEM SET creation=:creation, last_modification=:last_modification, title=:title, "
+			+ "description=:description, list_id=:list_id WHERE id=:id";
+	
+	private static final String deleteQuery = "DELETE FROM ITEM WHERE id=:id";
+	
 	public static List<Item> getAll() throws Exception {
 		
 		Connection conn = DAO.getConnection();
@@ -32,7 +38,7 @@ public class ItemDAO {
 		
 	}
 	
-	public static Item getById(int id) throws Exception {
+	public static Item getById(String id) throws Exception {
 		
 		Connection conn = DAO.getConnection();
 		if (conn != null) {
@@ -100,6 +106,41 @@ public class ItemDAO {
 		} else {
 			throw new Exception("Database connection failled !");
 		}
+		
+	}
+	
+	public static void update(Item item) throws Exception {
+		
+		Connection conn = DAO.getConnection();
+		if (conn != null) {	
+			conn.createQuery(updateQuery)
+					.addParameter("creation", item.getCreationDate())
+					.addParameter("last_modification", item.getLastModificationDate())
+					.addParameter("title", item.getTitle())
+					.addParameter("description", item.getDescription())
+					.addParameter("list_id", item.getListId())
+					.addParameter("id", item.getId())
+					.executeUpdate();
+			conn.commit();
+			conn.close();
+		} else {
+			throw new Exception("Database connection failled !");
+		}		
+	
+	}
+	
+	public static void delete(Item item) throws Exception {
+		
+		Connection conn = DAO.getConnection();
+		if (conn != null) {	
+			conn.createQuery(deleteQuery)
+					.addParameter("id", item.getId())
+					.executeUpdate();
+			conn.commit();
+			conn.close();
+		} else {
+			throw new Exception("Database connection failled !");
+		}		
 		
 	}
 	

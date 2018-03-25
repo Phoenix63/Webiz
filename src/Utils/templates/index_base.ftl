@@ -14,8 +14,6 @@
   	<title>${title}</title>
 </head>
 <body>
-
-<body>
         <div class="container">
         	<header>
         		<h1>Welcome to webiz</h1>
@@ -84,6 +82,5 @@
                 </div>  
             </section>
         </div>
-
 </body>
 </html>

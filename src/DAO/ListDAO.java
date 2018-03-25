@@ -12,9 +12,13 @@ public class ListDAO {
 	private static final String getByIdQuery = "SELECT * FROM LIST WHERE ID=:id;";
 	
 	private static final String insertQuery = 
-			"INSERT INTO LIST (title, description)"
-		  + "VALUES (:title, :description);";
+			"INSERT INTO LIST (title, description) VALUES (:title, :description);";
 
+	private static final String updateQuery = 
+			"UPDATE LIST SET title=:title, description=:description WHERE id=:id";
+	
+	private static final String deleteQuery = "DELETE FROM LIST WHERE id=:id";
+	
 	public static List<UserList> getAll() throws Exception {
 		
 		Connection conn = DAO.getConnection();
@@ -67,6 +71,38 @@ public class ListDAO {
 		} else {
 			throw new Exception("Database connection failled !");
 		}
+		
+	}
+	
+	public static void update(UserList list) throws Exception {
+		
+		Connection conn = DAO.getConnection();
+		if (conn != null) {	
+			conn.createQuery(updateQuery)
+					.addParameter("title", list.getTitle())
+					.addParameter("description", list.getDescription())
+					.addParameter("id", list.getId())
+					.executeUpdate();
+			conn.commit();
+			conn.close();
+		} else {
+			throw new Exception("Database connection failled !");
+		}		
+	
+	}
+	
+	public static void delete(UserList list) throws Exception {
+		
+		Connection conn = DAO.getConnection();
+		if (conn != null) {	
+			conn.createQuery(deleteQuery)
+					.addParameter("id", list.getId())
+					.executeUpdate();
+			conn.commit();
+			conn.close();
+		} else {
+			throw new Exception("Database connection failled !");
+		}		
 		
 	}
 	
