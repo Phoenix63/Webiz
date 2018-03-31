@@ -22,6 +22,8 @@ public class Item implements Serializable {
 	private String title;
 	private String description;
 	
+	private String state;
+		
 	/// Foreign key
 	private int list_id;
 	
@@ -109,6 +111,14 @@ public class Item implements Serializable {
 	
 	/**
 	 * 
+	 * @return
+	 */
+	public String getState() {
+		return state;
+	}
+	
+	/**
+	 * 
 	 * @param id The id of the current item
 	 * @throws Exception if the property id is already set
 	 */
@@ -155,6 +165,14 @@ public class Item implements Serializable {
 	 */
 	public void setListId(int id) {
 		this.list_id = id;
+	}
+	
+	/**
+	 * 
+	 * @param state The state of the item, it must be "TODO", "DONE" or "DELETED"
+	 */
+	public void setState(String state) {
+		if (state == "TODO" || state == "DONE" || state == "DELETED") this.state = state;
 	}
 	
 	/**

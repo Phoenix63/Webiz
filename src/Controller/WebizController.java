@@ -2,8 +2,7 @@ package Controller;
 
 import Component.*;
 
-import DAO.ItemDAO;
-import DAO.ListDAO;
+import DAO.*;
 
 import Utils.FreeMarkerEngine;
 
@@ -18,6 +17,7 @@ import spark.ModelAndView;
 public class WebizController {
 
 	private final String WEBIZ_SESS_ON = "WEBIZ_SESS_ON";
+	private final String WEBIZ_SESS_ACCOUNT = "WEBIZ_SESS_ACCOUNT";
 	private final String WEBIZ_LOGIN_ERR = "WEBIZ_LOGIN_ERR";
 	private final String WEBIZ_REGISTER_ERR = "WEBIZ_REGISTER_ERR";
 	
@@ -70,8 +70,11 @@ public class WebizController {
 				model.put("title", "Welcome page");
 				
 				if (req.session().attribute(WEBIZ_LOGIN_ERR) != null) {
+					model.put("loginError", (String)req.session().attribute(WEBIZ_LOGIN_ERR));
 					req.session().removeAttribute(WEBIZ_LOGIN_ERR);
-					model.put("loginError", "true");
+				} else if (req.session().attribute(WEBIZ_REGISTER_ERR) != null) {
+					model.put("registerError", (String)req.session().attribute(WEBIZ_REGISTER_ERR));
+					req.session().removeAttribute(WEBIZ_REGISTER_ERR);					
 				}
 				
 				return new FreeMarkerEngine().render(new ModelAndView(model, "index_base.ftl"));
@@ -159,7 +162,6 @@ public class WebizController {
 		
 		Spark.post("/login", (req, res) -> {
 			
-			// TODO: check in the database
 			String username = req.queryParamOrDefault("username", null);
 			String password = req.queryParamOrDefault("password", null);
 			
@@ -167,20 +169,61 @@ public class WebizController {
 				Spark.halt(400); // bad request
 			}
 			
-			/// Check if the given credential work
-			if (!username.equals("romain")) { // If it's wrong
-				
-				req.session().attribute(WEBIZ_LOGIN_ERR, "true");
-				res.redirect("/");
-				
-			} else {
-				
-				req.session(true).attribute(WEBIZ_SESS_ON, "true");
-				res.redirect("/");
-				
-			}		
+			password = Utils.Secure.hash(password);
 			
+			Account account = AccountDAO.getByName(username);
+			if (account == null || !account.getPassword().equals(password)) {
+				req.session().attribute(WEBIZ_LOGIN_ERR, "Wrong credential");
+				res.redirect("/#tologin");
+				return "";
+			}
+			
+			req.session(true).attribute(WEBIZ_SESS_ON, "true");
+			req.session().attribute(WEBIZ_SESS_ACCOUNT, account);
+			res.redirect("/");
+		
 			return "";		
+			
+		});
+		
+		Spark.post("/register", (req, res) -> {
+
+			String username = req.queryParamOrDefault("usernamesignup", null);
+			String password = req.queryParamOrDefault("passwordsignup", null);
+			String password_confirm = req.queryParamOrDefault("passwordsignup_confirm", null);
+			String mail = req.queryParamOrDefault("emailsignup", null);
+			
+			if (username == null || password == null || password_confirm == null || mail == null) {
+				Spark.halt(400); // bad request
+			}
+
+			/// Check the non-existence of username
+			if (AccountDAO.getByName(username) != null) {
+				req.session().attribute(WEBIZ_REGISTER_ERR, "Username already exist");
+				res.redirect("/#toregister");
+				return "";
+			}
+			
+			/// Check password equality
+			if (!password.equals(password_confirm)) {
+				req.session().attribute(WEBIZ_REGISTER_ERR, "Passwords mismatch");
+				res.redirect("/#toregister");
+				return "";
+			}
+			
+			password = Utils.Secure.hash(password);
+			
+			Account account = new Account();
+			account.setUsername(username);
+			account.setPassword(password);
+			account.setMail(mail);
+			account.makePersistent();
+			
+			req.session(true).attribute(WEBIZ_SESS_ON, "true");
+			req.session().attribute(WEBIZ_SESS_ACCOUNT, account);
+			res.redirect("/");
+			
+			return "";
 			
 		});
 		

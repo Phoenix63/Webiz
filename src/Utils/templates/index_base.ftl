@@ -37,7 +37,7 @@
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <#if loginError??>
-                                <span style="color: red;">Wrong credential</span>
+                                <span style="color: red;">${loginError}</span>
                                 </#if>
                                 <p class="login button"> 
                                     <input type="submit" value="Login" /> 
@@ -68,6 +68,9 @@
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
                                     <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
+                                <#if registerError??>
+                                <span style="color: red;">${registerError}</span>
+                                </#if>
                                 <p class="signin button"> 
 									<input type="submit" value="Sign up"/> 
 								</p>
