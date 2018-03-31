@@ -15,8 +15,11 @@
   			<input type="text" name="description" value="${item.description}">
   			<input type="submit" value="update"> 
   		</form>
+	</div>
+		  	
+  	<div class="item-deletion">  		
   		<form action="./${item.id}/remove" method="POST">
-  			<input type="submit" value="definitively delete">
+  			<input type="submit" value="Remove">
   		</form>
 	</div>
 

@@ -1,0 +1,38 @@
+/*** Item container ***/
+
+.item-container {
+	border: 1px solid black;
+}
+
+/*** Item deletion ***/
+
+.item-deletion {
+	position: fixed;
+	top: calc(100% - 30px - 30px);
+	left: calc(100% - 30px - 100px);
+	width: 100px;
+	height: 30px;
+	border: 2px solid red;
+	border-radius: 7px;
+}
+
+.item-deletion input[type='submit'] {
+  margin      : 0;
+  padding     : 0;
+  border      : 0;  
+  width		  : 100%;
+  height	  : 100%;
+  padding-right: 5px;
+  background  : transparent url('../images/remove.png') no-repeat 5px center;
+  font-size   : 16px;
+  color  	  : red;
+  line-height : 30px;
+  text-align  : right;
+  cursor      : pointer;  
+  transition  : background 0.3s ease 0.1s, color 0.1s ease 0s;
+}
+
+.item-deletion input[type='submit']:hover {
+  background  : red url('../images/remove_hovered.png') no-repeat 5px center;
+  color  	  : white;
+}

@@ -7,6 +7,7 @@
   	<link rel="stylesheet" type="text/css" href="/css/base.css" />
 	<link rel="stylesheet" type="text/css" href="/css/header.css" />
 	<link rel="stylesheet" type="text/css" href="/css/list.css" />
+	<link rel="stylesheet" type="text/css" href="/css/item.css" />
     
   	<title>${title}</title>  
 </head>
