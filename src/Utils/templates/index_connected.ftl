@@ -1,8 +1,5 @@
-<html>
-<head>
-  <title>${title}</title>
-</head>
-<body>
+<#include "/header.ftl">
+
 	<!-- User list bloc -->
 	<div>
   		<ul>
@@ -19,5 +16,4 @@
   		</ul>
   	</div>
 
-</body>
-</html>
+<#include "/footer.ftl">

@@ -1,8 +1,5 @@
-<html>
-<head>
-  <title>${title}</title>
-</head>
-<body>
+<#include "/header.ftl">
+
 	<!-- Title / Description bloc -->
 	<div>
  		<h1>${userList.title}</h1>
@@ -33,6 +30,4 @@
   		</ul>
   	</div>
   	
-
-</body>
-</html>
+<#include "/footer.ftl">

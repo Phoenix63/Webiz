@@ -23,6 +23,7 @@ public class WebizController {
 	
 	public WebizController() {		
 		Spark.staticFileLocation("Utils/templates/static");
+		Spark.staticFiles.expireTime(600);		
 		initializeRoutes();		
 	}
 	public WebizController(int port) {
@@ -32,7 +33,12 @@ public class WebizController {
 
 	private void initializeRoutes() {
 
-		///NOTE: Spark.before(/list /list/:id /list/:id/item /list/:id/item/:itemId) for checking right
+		/// Ensure authentication
+		Spark.before("/list/*", (req, res) -> {
+			if (req.session().attribute(WEBIZ_SESS_ON) != "true") {
+				res.redirect("/");
+			}			
+		});
 		
 		initializeGetRoutes();
 		initializePostRoutes();
