@@ -15,19 +15,22 @@
 	</div>
 	
 	<!-- Item list bloc -->
-	<div>
-  		<ul>
-    		<#list userList.itemList as item>
-			<a href="./${userList.id}/item/${item.id}"><li>${item_index + 1}. ${item.title}</li></a>
-			</#list>
-			<li class="newItem">
-				<form action="./${userList.id}/item" method="POST">
-					<input type="text" name="title" placeholder="list name" required>
-  					<input type="text" name="description" placeholder="list description" required>
-  					<input type="submit" value="Add new item"> 
-				</form>
-			</li>
-  		</ul>
+	<div class="list-container">
+		<div class="list-header">
+			<h1>My items</h1>
+		</div>
+		<#list userList.itemList as item>
+		<a href="./${userList.id}/item/${item.id}">
+		<div class="list-item"><p>${item.title}</p></div>
+		</a>
+		</#list>
+		<div class="list-item new-item">
+			<form action="./${userList.id}/item" method="POST">
+				<input type="text" name="title" placeholder="list name" required>
+  				<input type="text" name="description" placeholder="list description" required>
+  				<input type="submit" value="Add new item"> 
+			</form>
+		</div>
   	</div>
   	
 <#include "/footer.ftl">

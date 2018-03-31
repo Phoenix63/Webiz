@@ -1,0 +1,85 @@
+/*** List container ***/
+
+.list-container {
+	position: relative;
+	margin-top: 15px;
+}
+
+/*** List header ***/
+
+.list-header {
+	height: 40px;
+	width: 100%;
+	vertical-align: middle;
+	border-bottom: 1px solid gray;
+}
+
+.list-header h1 {
+	font: normal 30px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin-left: 10px;
+}
+
+/*** List item ***/
+
+.list-item {	
+	cursor: pointer;
+	display: block;
+	width: calc(100% - 20px);
+	height: 50px;
+	margin-top: 5px;
+	padding-left: 20px;	
+	vertical-align: middle;
+	text-align: left;
+	border-radius: 4px;
+	box-shadow: 0px 0px 2px #000000 inset;
+	background-color: #f0faff;	
+	transition: background-color 0.3s ease 0.1s;
+}
+
+.list-item:HOVER {
+	background-color: #e1ecff;	
+}
+
+.list-item p {	
+	font-size: 40px;
+}
+
+/*** New item ***/
+
+.new-item {
+	padding: 0;
+	width: 100%;	
+	text-align: center;
+	cursor: auto;
+}
+
+.new-item:HOVER {
+	background-color: #f0faff;
+}
+
+.new-item form {	
+	height: 100%;
+	width: 100%;
+}
+
+.new-item input:not([type="checkbox"]) {
+	width: 25%;
+	height: calc(100% - 10px - 10px - 1px - 1px - 5px - 5px);
+	margin-top: 5px;
+	padding: 10px 10px;	
+	border: 1px solid rgb(178, 178, 178);
+	box-sizing : content-box;
+	border-radius: 3px;
+	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+}
+
+.new-item input[type="submit"] {
+	width: 80px;
+	cursor: pointer;
+	border-radius: 3px;	
+}
+
+.new-item input[type="submit"]:hover {
+	background-color: #91c8ff;
+}

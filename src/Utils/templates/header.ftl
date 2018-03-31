@@ -6,6 +6,7 @@
   	
   	<link rel="stylesheet" type="text/css" href="/css/base.css" />
 	<link rel="stylesheet" type="text/css" href="/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="/css/list.css" />
     
   	<title>${title}</title>  
 </head>
@@ -19,4 +20,4 @@
 			</div>
 		</div>
 	</header>
-	<div class="page-content">
+	<div id="page-content">

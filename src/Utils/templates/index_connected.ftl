@@ -1,19 +1,26 @@
 <#include "/header.ftl">
 
-	<!-- User list bloc -->
 	<div>
-  		<ul>
-    		<#list lists as list>
-      		<a href="./list/${list.id}"><li>${list.title}</li></a>
-			</#list>
-			<li class="newItem">
+		
+	</div>
+	
+	<!-- User list bloc -->
+	<div class="list-container">
+		<div class="list-header">
+			<h1>My lists</h1>
+		</div>
+    	<#list lists as list>
+    	<a href="./list/${list.id}">
+		<div class="list-item"><p>${list.title}</p></div>
+		</a>
+		</#list>
+		<div class="list-item new-item">
 				<form action="./list" method="POST">
-					<input type="text" name="title" placeholder="list name" required>
-  					<input type="text" name="description" placeholder="list description" required>
+					<input type="text" name="title" placeholder="Name of the new list" required>
+  					<input type="text" name="description" placeholder="Description of the new list" required>
   					<input type="submit" value="Add new item"> 
 				</form>
-			</li>
-  		</ul>
+		</div>
   	</div>
 
 <#include "/footer.ftl">
