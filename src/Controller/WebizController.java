@@ -40,6 +40,14 @@ public class WebizController {
 			}			
 		});
 		
+		/// Allow using url which end with /
+		Spark.before((req, res) -> {
+			String path = req.pathInfo();
+			if (path.endsWith("/") && path.length() > 1) {
+				res.redirect(path.substring(0, path.length() - 1));
+			}
+		});
+		
 		initializeGetRoutes();
 		initializePostRoutes();
 		initializePutRoutes();

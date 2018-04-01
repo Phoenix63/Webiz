@@ -101,3 +101,18 @@ a{
 	color: #2d6277;
 	text-shadow: 0px 1px 1px rgba(255,255,255,0.8);
 }
+
+.back-button {
+	position: fixed;
+	width: 30px;
+	height: 30px;
+	top: 85px;
+	left: 5px;
+	border: 2px solid #0C387A;
+	border-radius: 7px;
+	background: transparent url('../images/back.png') no-repeat center;
+	transition: background 0.3s ease 0.1s;
+}
+.back-button:hover {
+	background: #0C387A url('../images/back_hovered.png') no-repeat center;
+}

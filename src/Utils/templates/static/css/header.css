@@ -105,14 +105,6 @@
 		padding: 20px 10px;
 	}
 
-	.header-menu .header-wrapper h1 {
-		/*float: none;
-		margin: -8px 0 2px;
-		text-align: center;
-		font-size: 24px;
-		line-height: 1;*/
-	}
-
 	.header-menu .header-wrapper nav {
 		margin: 0;
 		float: none;
@@ -124,7 +116,6 @@
 	}
 
 	.header-menu .header-wrapper .logout-button {
-		/*display: none;*/
 		font-size: 7px;
 		height: 20px;
 		padding: 0 10px;		

@@ -1,5 +1,7 @@
 <#include "/header.ftl">
 
+	<a href="../" class="back-button"></a>
+	
 	<!-- Title / Description bloc -->
 	<div class="item-container">
 	

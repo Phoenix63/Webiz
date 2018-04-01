@@ -43,7 +43,11 @@
 }
 
 .list-item p {	
-	font-size: 40px;
+	line-height: 50px;
+	white-space: nowrap;
+  	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 30px;
 }
 
 /*** New item ***/
@@ -109,5 +113,8 @@
 	.new-item input[type="submit"]:hover {
 		background: green url('../images/plus_hovered.png') no-repeat center;
 		color: transparent;
+	}
+	.list-item p {
+		font-size: 20px;
 	}
 }

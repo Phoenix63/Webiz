@@ -1,9 +1,5 @@
 <#include "/header.ftl">
 
-	<div>
-		
-	</div>
-	
 	<!-- User list bloc -->
 	<div class="list-container">
 		<div class="list-header">
