@@ -33,6 +33,7 @@ public class Item implements Serializable {
 	public Item() {
 		creation = new Date();
 		last_modification = (Date) creation.clone();
+		state = "TODO";
 	}
 	
 	/**
@@ -62,7 +63,8 @@ public class Item implements Serializable {
 		return "Item@"+this.id
 				+" ["+this.title+"]" + "{"+this.description+"}"
 				+" created: "+this.creation
-				+" last updated: "+this.last_modification ;
+				+" last updated: "+this.last_modification
+				+" is "+this.state;
 	}
 	
 	/**
@@ -172,7 +174,12 @@ public class Item implements Serializable {
 	 * @param state The state of the item, it must be "TODO", "DONE" or "DELETED"
 	 */
 	public void setState(String state) {
-		if (state == "TODO" || state == "DONE" || state == "DELETED") this.state = state;
+		if (state.equals("TODO") || 
+				state.equals("DONE") || 
+				state.equals("DELETED")) 
+		{
+			this.state = state;
+		}
 	}
 	
 	/**

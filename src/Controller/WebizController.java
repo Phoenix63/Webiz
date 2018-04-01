@@ -361,13 +361,15 @@ public class WebizController {
 			
 			String title = req.queryParamOrDefault("title", null); // required
 			String description = req.queryParamOrDefault("description", null); // required
+			String state = req.queryParamOrDefault("state", null); // required
 			
-			if (title == null || description == null) {
+			if (title == null || description == null || state == null) {
 				Spark.halt(400); // bad request
 			}
 			
 			item.setTitle(title);
 			item.setDescription(description);
+			item.setState(state);
 			item.setLastModificationDate(new Date());
 			item.makePersistent();
 
@@ -461,13 +463,15 @@ public class WebizController {
 			
 			String title = req.queryParamOrDefault("title", null); // required
 			String description = req.queryParamOrDefault("description", null); // required
+			String state = req.queryParamOrDefault("state", null); // required
 			
-			if (title == null || description == null) {
+			if (title == null || description == null || state == null) {
 				Spark.halt(400); // bad request
 			}
 			
 			item.setTitle(title);
 			item.setDescription(description);
+			item.setState(state);
 			item.setLastModificationDate(new Date());
 			item.makePersistent();
 

@@ -14,12 +14,12 @@ public class ItemDAO {
 	private static final String getByIdAndListIdQuery = "SELECT * FROM ITEM WHERE ID=:id AND LIST_ID=:listId;";
 	
 	private static final String insertQuery = 
-			"INSERT INTO ITEM (creation, last_modification, title, description, list_id) "
-		  + "VALUES (:creation, :last_modification, :title, :description, :list_id);";
+			"INSERT INTO ITEM (creation, last_modification, title, description, list_id, state) "
+		  + "VALUES (:creation, :last_modification, :title, :description, :list_id, :state);";
 	
 	private static final String updateQuery = 
 			"UPDATE ITEM SET creation=:creation, last_modification=:last_modification, title=:title, "
-			+ "description=:description, list_id=:list_id WHERE id=:id";
+			+ "description=:description, list_id=:list_id, state=:state WHERE id=:id";
 	
 	private static final String deleteQuery = "DELETE FROM ITEM WHERE id=:id";
 	
@@ -97,6 +97,7 @@ public class ItemDAO {
 							   .addParameter("title", item.getTitle())
 							   .addParameter("description", item.getDescription())
 							   .addParameter("list_id", item.getListId())
+								 .addParameter("state", item.getState())
 							   .executeUpdate()
 							   .getKey();
 			conn.commit();
@@ -119,6 +120,7 @@ public class ItemDAO {
 					.addParameter("title", item.getTitle())
 					.addParameter("description", item.getDescription())
 					.addParameter("list_id", item.getListId())
+					.addParameter("state", item.getState())
 					.addParameter("id", item.getId())
 					.executeUpdate();
 			conn.commit();

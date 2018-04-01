@@ -26,6 +26,18 @@
 	  		<form action="./${item.id}" method="POST">  		
 	  			<input type="text" name="title" value="${item.title}">
 	  			<input type="text" name="description" value="${item.description}">
+	  			<#if item.state == "TODO">
+	  			<select name="state">
+	  				<option value="TODO" selected>TODO</option>
+	  				<option value="DONE">DONE</option>
+	  			</select>
+	  			</#if>
+	  			<#if item.state == "DONE">
+	  			<select name="state">
+	  				<option value="TODO">TODO</option>
+	  				<option value="DONE" selected>DONE</option>
+	  			</select>
+	  			</#if>
 	  		</form>
 	  	</div>
 	  	

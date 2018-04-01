@@ -43,7 +43,14 @@
 		</div>
 		<#list userList.itemList as item>
 		<a href="./${userList.id}/item/${item.id}">
-		<div class="list-item"><p>${item.title}</p></div>
+		<div class="list-item">
+		<#if item.state == "DONE"> 
+			<del>${item.title}</del>
+		</#if>
+		<#if item.state != "DONE"> 
+			<p>${item.title}</p>
+		</#if>
+		</div>
 		</a>
 		</#list>
 		<div class="list-item new-item">

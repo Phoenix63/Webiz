@@ -42,7 +42,8 @@
 	background-color: #e1ecff;	
 }
 
-.list-item p {	
+.list-item p, 
+.list-item del {	
 	line-height: 50px;
 	white-space: nowrap;
   	overflow: hidden;
@@ -114,7 +115,8 @@
 		background: green url('../images/plus_hovered.png') no-repeat center;
 		color: transparent;
 	}
-	.list-item p {
+	.list-item p,
+	.list-item del {
 		font-size: 20px;
 	}
 }
