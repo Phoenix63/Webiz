@@ -1,7 +1,91 @@
 /*** Item container ***/
 
 .item-container {
-	border: 1px solid black;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+/*** Item action ***/
+
+.item-action-wrapper {
+	float: right;
+}
+
+.item-action-edit, .item-action-share {
+	float: right;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #3D3F40;
+	border-radius: 7px;
+	transition: background 0.3s ease 0.1s;
+}
+
+.item-action-edit {
+	background: transparent url('../images/edit.png') no-repeat center;
+}
+
+.item-action-edit:hover {
+	background: #3D3F40 url('../images/edit_hovered.png') no-repeat center;
+}
+
+.item-action-share {
+	margin-right: 5px;
+	background: transparent url('../images/share.png') no-repeat center;
+}
+
+.item-action-share:hover {
+	background: #3D3F40 url('../images/share_hovered.png') no-repeat center;
+}
+
+.item-action-valid, .item-action-reject {
+	float: right;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;	
+	border-radius: 7px;
+	transition: background 0.3s ease 0.1s;
+}
+
+.item-action-valid {
+	border: 2px solid green;
+	background: transparent url('../images/valid.png') no-repeat center;
+}
+
+.item-action-valid:hover {
+	background: green url('../images/valid_hovered.png') no-repeat center;
+}
+
+.item-action-reject {
+	margin-right: 5px;
+	border: 2px solid red;
+	background: transparent url('../images/deny.png') no-repeat center;
+}
+
+.item-action-reject:hover {
+	background: red url('../images/deny_hovered.png') no-repeat center;
+}
+
+/*** Item information ***/
+
+.item-information {
+	width: calc(100% - 30px - 30px - 10px - 10px - 5px);
+}
+
+.item-information h1 {
+	font: normal 40px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 50px;
+	border-bottom: 2px solid gray;
+}
+
+.item-information h2 {
+	font: normal 20px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 25px;
+	margin-left: 5px;
+}
+
+.item-information-date {
+	float: right;
 }
 
 /*** Item deletion ***/
@@ -35,4 +119,20 @@
 .item-deletion input[type='submit']:hover {
   background  : red url('../images/remove_hovered.png') no-repeat 5px center;
   color  	  : white;
+}
+
+@media (max-width: 600px) {
+	.item-deletion {
+		left: calc(100% - 30px - 30px);
+		width: 30px;
+	}
+	.item-deletion input[type="submit"] {
+		color: transparent;
+		background: transparent url('../images/remove.png') no-repeat center;
+  		transition: background 0.3s ease 0.1s;
+	}
+	.item-deletion input[type='submit']:hover {
+  		background: red url('../images/remove_hovered.png') no-repeat center;
+  		color: transparent;
+	}
 }

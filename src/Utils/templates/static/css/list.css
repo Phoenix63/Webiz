@@ -2,21 +2,22 @@
 
 .list-container {
 	position: relative;
-	margin-top: 15px;
+	width: 95%;
+	left: 2.5%;
 }
 
 /*** List header ***/
 
 .list-header {
-	height: 40px;
+	height: 50px;
 	width: 100%;
 	vertical-align: middle;
 	border-bottom: 1px solid gray;
 }
 
 .list-header h1 {
-	font: normal 30px Cookie, Arial, Helvetica, sans-serif;
-	line-height: 40px;
+	font: normal 40px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 50px;
 	margin-left: 10px;
 }
 
@@ -51,20 +52,24 @@
 	padding: 0;
 	width: 100%;	
 	text-align: center;
-	cursor: auto;
+	cursor: auto;	
+	
+	box-shadow: 0px 0px 0px transparent inset;
+	background-color: transparent;
 }
 
 .new-item:HOVER {
-	background-color: #f0faff;
+	/*background-color: #f0faff;*/
+	background-color: transparent;
 }
 
-.new-item form {	
+.new-item form {
 	height: 100%;
 	width: 100%;
 }
 
 .new-item input:not([type="checkbox"]) {
-	width: 25%;
+	width: 30%;
 	height: calc(100% - 10px - 10px - 1px - 1px - 5px - 5px);
 	margin-top: 5px;
 	padding: 10px 10px;	
@@ -74,12 +79,35 @@
 	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
 }
 
-.new-item input[type="submit"] {
-	width: 80px;
+.new-item input[type="submit"] {	
+	box-shadow: 0px 0px 0px 0px transparent inset;
+	width: 50px;
+  	padding-right: 5px;
+	color: green;
+	font-size: 16px;
+	line-height: 100%;
+  	text-align: right;
+	border-radius: 7px;
+	border: 2px solid green;
+	background: transparent url('../images/plus.png') no-repeat 5px center;
 	cursor: pointer;
-	border-radius: 3px;	
+  	transition: background 0.3s ease 0.1s, color 0.1s ease 0s;
 }
 
 .new-item input[type="submit"]:hover {
-	background-color: #91c8ff;
+	background: green url('../images/plus_hovered.png') no-repeat 5px center;
+	color: white;
+}
+
+@media (max-width: 600px) {
+	.new-item input[type="submit"] {
+		width: 20px;
+		color: transparent;
+		background: transparent url('../images/plus.png') no-repeat center;
+  		transition: background 0.3s ease 0.1s;
+	}
+	.new-item input[type="submit"]:hover {
+		background: green url('../images/plus_hovered.png') no-repeat center;
+		color: transparent;
+	}
 }

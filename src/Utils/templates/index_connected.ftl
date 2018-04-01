@@ -17,8 +17,8 @@
 		<div class="list-item new-item">
 				<form action="./list" method="POST">
 					<input type="text" name="title" placeholder="Name of the new list" required>
-  					<input type="text" name="description" placeholder="Description of the new list" required>
-  					<input type="submit" value="Add new item"> 
+  					<input type="text" name="description" placeholder="Description of the new list">
+  					<input type="submit" value="Add"> 
 				</form>
 		</div>
   	</div>

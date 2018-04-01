@@ -230,10 +230,10 @@ public class WebizController {
 		/// Create a new list
 		Spark.post("/list", (req, res) -> {
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", "");
 			
-			if (title == null || description == null) {
+			if (title == null) {
 				Spark.halt(400); // bad request
 			}
 			
@@ -265,8 +265,8 @@ public class WebizController {
 				return String.format("No list with id '%s' found", id);
 			}
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", null); // required
 			
 			if (title == null || description == null) {
 				Spark.halt(400); // bad request
@@ -316,10 +316,10 @@ public class WebizController {
 				return String.format("No list with id '%s' found", listId);
 			}
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", "");
 			
-			if (title == null || description == null) {
+			if (title == null) {
 				Spark.halt(400); // bad request
 			}
 			
@@ -351,8 +351,8 @@ public class WebizController {
 				return String.format("No item with id '%s' found", itemId);
 			}
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", null); // required
 			
 			if (title == null || description == null) {
 				Spark.halt(400); // bad request
@@ -416,8 +416,8 @@ public class WebizController {
 				return String.format("No list with id '%s' found", id);
 			}
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", null); // required
 			
 			if (title == null || description == null) {
 				Spark.halt(400); // bad request
@@ -451,8 +451,8 @@ public class WebizController {
 				return String.format("No item with id '%s' found", itemId);
 			}
 			
-			String title = req.queryParamOrDefault("title", null);
-			String description = req.queryParamOrDefault("description", null);
+			String title = req.queryParamOrDefault("title", null); // required
+			String description = req.queryParamOrDefault("description", null); // required
 			
 			if (title == null || description == null) {
 				Spark.halt(400); // bad request
