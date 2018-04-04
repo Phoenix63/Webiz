@@ -20,6 +20,9 @@ public class UserList implements Serializable {
 	private String title;
 	private String description;
 	
+	/// Foreign key
+	private int owner_id;
+
 	private List<Item> itemList_;
 	
 	/**
@@ -81,6 +84,13 @@ public class UserList implements Serializable {
 	}
 
 	/**
+	 * @return the owner_id
+	 */
+	public int getOwnerId() {
+		return owner_id;
+	}
+	
+	/**
 	 * 
 	 * @param id
 	 * @throws Exception
@@ -111,6 +121,13 @@ public class UserList implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+		
+	/**
+	 * @param owner_id the owner_id to set
+	 */
+	public void setOwnerId(int owner_id) {
+		this.owner_id = owner_id;
 	}
 
 	/**

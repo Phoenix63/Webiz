@@ -34,10 +34,25 @@ public class WebizController {
 	private void initializeRoutes() {
 
 		/// Ensure authentication
-		Spark.before("/list/*", (req, res) -> {
+		Spark.before("/list/*", (req, res) -> {			
 			if (req.session().attribute(WEBIZ_SESS_ON) != "true") {
 				res.redirect("/");
+				return;
 			}			
+		});
+
+		/// Ensure authorization on the resources
+		Spark.before("/list/*/", (req, res) -> {
+			
+			Account account = (Account)req.session().attribute(WEBIZ_SESS_ACCOUNT);
+			String accountId = account.getId() + "";
+			String listId = req.splat()[0];
+			
+			if (!AccountListDAO.check(accountId, listId)) {
+				res.redirect("/", 403);
+				return;
+			}
+			
 		});
 		
 		/// Allow using url which end with /
@@ -60,9 +75,14 @@ public class WebizController {
 		Spark.get("/", (req, res) -> {
 					
 			if (req.session().attribute(WEBIZ_SESS_ON) == "true") {
+
+				Account account = (Account)req.session().attribute(WEBIZ_SESS_ACCOUNT);
+				if (account == null) {
+					res.status(500);	
+				}
 				
 				// 1. Retrieve data
-				List<UserList> list = ListDAO.getAll();
+				List<UserList> list = ListDAO.getAllByAccountId(account.getId()+"");
 
 				// 2. Build model
 				Map<String, Object> model = new HashMap<String, Object>();
@@ -117,7 +137,7 @@ public class WebizController {
 				res.status(404);
 				return String.format("No list with id '%s' found", id);
 			}
-
+			
 			// 1. Retrieve data
 			UserList list = ListDAO.getById(id);
 			if (list == null) {
@@ -129,6 +149,8 @@ public class WebizController {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("title", "List page");
 			model.put("userList", list);
+			model.put("jsEnabled", true);
+			model.put("shareEnabled", true);
 			
 			// 3. Make response
 			return new FreeMarkerEngine().render(new ModelAndView(model, "list.ftl"));		
@@ -159,6 +181,7 @@ public class WebizController {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("title", "Item page");
 			model.put("item", item);
+			model.put("jsEnabled", true);
 			
 			// 3. Make response
 			return new FreeMarkerEngine().render(new ModelAndView(model, "item.ftl"));		
@@ -245,10 +268,18 @@ public class WebizController {
 				Spark.halt(400); // bad request
 			}
 			
+			Account account = (Account)req.session().attribute(WEBIZ_SESS_ACCOUNT);
+			if (account == null) {
+				Spark.halt(400); // bad request				
+			}
+			
 			UserList list = new UserList();		
 			list.setTitle(title);
 			list.setDescription(description);
+			list.setOwnerId(account.getId());
 			list.makePersistent();
+			
+			AccountListDAO.insert(account.getId()+"", list.getId()+"");
 
 			res.redirect("/list/"+list.getId(), 303); // see other			
 			return "";
@@ -312,6 +343,41 @@ public class WebizController {
 			return "";			
 		});
 		
+		/// Share the list {listId} to user {userName}
+		Spark.post("/list/:listId/share/:username", (req, res) -> {
+
+			String listId = req.params(":listId");
+			String username = req.params(":username");
+
+			try {
+				Integer.parseInt(listId);
+			} catch (Exception ex) {
+				res.status(404);
+				return String.format("No list with id '%s' found", listId);
+			}
+
+			UserList list = ListDAO.getById(listId);
+			if (list == null) {
+				res.status(404);
+				return String.format("No item with id '%s' found", listId);
+			}
+			
+			Account account = AccountDAO.getByName(username);
+			if (account == null) {
+				res.status(404);
+				return String.format("No user with name '%s' found", username);
+			}
+			
+			String accountId = account.getId() + "";
+			
+			if (!AccountListDAO.check(accountId, listId)) {
+				AccountListDAO.insert(accountId, listId);
+			}
+			res.redirect("/list/"+listId, 303);
+			return "";
+			
+		});
+
 		/// Create a new item in list {listId}
 		Spark.post("/list/:listId/item", (req, res) -> {
 			

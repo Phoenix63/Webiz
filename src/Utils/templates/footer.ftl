@@ -2,6 +2,7 @@
 	</div>
 </body>
 
+<#if jsEnabled??>
 <script type="text/javascript">
 	
 	function actionValid() {	
@@ -35,10 +36,22 @@
 		if (divDeletion) divDeletion.classList.remove("hide");		
 	}
 	
+	<#if shareEnabled??>
 	function actionShare() {
 		console.log("Action Share clicked");
+		
+		var username = prompt("Enter the username of the person to share the list with him", "");
+		if (username == null || username == "") return;
+		
+		var form = document.createElement("form");
+    	form.setAttribute("method", "POST");
+    	form.setAttribute("action", "/list/${userList.id}/share/"+username);
+    	document.body.appendChild(form);
+    	form.submit();
 	}
+	</#if>
 		
 </script>
+</#if>
 
 </html>
