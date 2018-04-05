@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "--Configuration of Webiz--\n"
-if find /usr/share/gradle/bin/gradle | grep "gradle" | wc -l > /dev/null
+if [ -e /usr/share/gradle/bin/gradle ]
 then
     echo " Checking gradle package: OK"
 else
@@ -9,7 +9,7 @@ else
     exit -1
 fi
 
-if find ~/Webiz.mv.db | grep "Webiz.mv.db" | wc -l > /dev/null
+if [ -e ~/Webiz.mv.db ]
 then
     echo " Checking database: OK"
 else
