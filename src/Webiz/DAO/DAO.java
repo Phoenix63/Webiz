@@ -1,4 +1,4 @@
-package DAO;
+package Webiz.DAO;
 
 import org.sql2o.*;
 

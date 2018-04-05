@@ -1,4 +1,4 @@
-package Utils;
+package Webiz.Utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

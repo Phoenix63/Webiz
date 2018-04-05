@@ -1,9 +1,9 @@
-package UnitTest;
+package Webiz.UnitTest;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import Component.*;
+import Webiz.Component.*;
 
 public class TestUserList {
 

@@ -1,9 +1,10 @@
-package Component;
+package Webiz.Component;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.ListDAO;
+import Webiz.DAO.ListDAO;
 
 /**
  * 

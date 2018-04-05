@@ -1,10 +1,10 @@
-package DAO;
+package Webiz.DAO;
 
 import java.util.List;
 
 import org.sql2o.Connection;
 
-import Component.Item; 
+import Webiz.Component.Item; 
 
 public class ItemDAO {
 

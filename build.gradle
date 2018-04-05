@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+dependencies {
+   compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+sourceSets {
+	main {
+	    java {
+	        srcDir "src/Webiz"
+	    }
+    }
+    test {
+        java {
+            srcDir "src/Webiz/UnitTest"
+        }
+    }
+}
+
+mainClassName = 'Webiz.Main'
+
+task copyTemplate(type: Copy) {
+    from 'src/Webiz/Utils/templates'
+    into 'build/classes/main/Webiz/Utils/templates'
+}
+
+project.afterEvaluate {
+    build.dependsOn copyTemplate
+    run.dependsOn copyTemplate
+}

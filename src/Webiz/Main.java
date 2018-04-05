@@ -1,11 +1,11 @@
-import Utils.TemplateConfiguration;
-
-import DAO.*;
+package Webiz;
 
 import java.util.List;
 
-import Component.*;
-import Controller.WebizController;
+import Webiz.Utils.TemplateConfiguration;
+import Webiz.DAO.*;
+import Webiz.Component.*;
+import Webiz.Controller.WebizController;
 
 public class Main {
 	/**

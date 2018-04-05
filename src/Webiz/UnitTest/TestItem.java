@@ -1,4 +1,4 @@
-package UnitTest;
+package Webiz.UnitTest;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import Component.*;
+import Webiz.Component.*;
 
 public class TestItem {
 	

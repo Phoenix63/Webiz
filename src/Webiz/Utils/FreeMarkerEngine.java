@@ -1,4 +1,4 @@
-package Utils;
+package Webiz.Utils;
 
 import java.io.IOException;
 import java.io.StringWriter;

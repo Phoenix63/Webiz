@@ -1,10 +1,8 @@
-package Controller;
+package Webiz.Controller;
 
-import Component.*;
-
-import DAO.*;
-
-import Utils.FreeMarkerEngine;
+import Webiz.Component.*;
+import Webiz.DAO.*;
+import Webiz.Utils.*;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +20,7 @@ public class WebizController {
 	private final String WEBIZ_REGISTER_ERR = "WEBIZ_REGISTER_ERR";
 	
 	public WebizController() {		
-		Spark.staticFileLocation("Utils/templates/static");
+		Spark.staticFileLocation("Webiz/Utils/templates/static");
 		Spark.staticFiles.expireTime(600);		
 		initializeRoutes();		
 	}
@@ -200,7 +198,7 @@ public class WebizController {
 				Spark.halt(400); // bad request
 			}
 			
-			password = Utils.Secure.hash(password);
+			password = Secure.hash(password);
 			
 			Account account = AccountDAO.getByName(username);
 			if (account == null || !account.getPassword().equals(password)) {
@@ -242,7 +240,7 @@ public class WebizController {
 				return "";
 			}
 			
-			password = Utils.Secure.hash(password);
+			password = Secure.hash(password);
 			
 			Account account = new Account();
 			account.setUsername(username);

@@ -1,8 +1,8 @@
-package Component;
+package Webiz.Component;
 
 import java.io.Serializable;
 
-import DAO.AccountDAO;
+import Webiz.DAO.AccountDAO;
 
 /**
  * 

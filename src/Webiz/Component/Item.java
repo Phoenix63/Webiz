@@ -1,9 +1,9 @@
-package Component;
+package Webiz.Component;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import DAO.ItemDAO;
+import Webiz.DAO.ItemDAO;
 
 /**
  * 
